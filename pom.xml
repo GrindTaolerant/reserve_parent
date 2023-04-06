@@ -36,7 +36,7 @@
         <jodatime.version>2.10.1</jodatime.version>
     </properties>
 
-    配置dependencyManagement锁定依赖的版本
+
     <dependencyManagement>
         <dependencies>
             <dependency>
