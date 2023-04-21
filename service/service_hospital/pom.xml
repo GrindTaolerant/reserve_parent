@@ -19,6 +19,12 @@
     </properties>
     <name>service_hospital</name>
     <description>service_hospital</description>
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-mongodb</artifactId>
+        </dependency>
+    </dependencies>
 
     <build>
         <finalName>service_hospital</finalName>

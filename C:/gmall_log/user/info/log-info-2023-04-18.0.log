@@ -1,0 +1,62 @@
+2023-04-18 00:24:21.578 [restartedMain] INFO  com.atguigu.hospital.ManageApplication - Starting ManageApplication using Java 1.8.0_345 on mac300.charter.com with PID 6102 (/Users/yttao300/Documents/Career/HospitalSys/HospitalProject/reserve_parent/hospital-manage/target/classes started by yttao300 in /Users/yttao300/Documents/Career/HospitalSys/HospitalProject/reserve_parent)
+2023-04-18 00:24:21.580 [restartedMain] INFO  com.atguigu.hospital.ManageApplication - The following 1 profile is active: "dev"
+2023-04-18 00:24:21.602 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2023-04-18 00:24:21.602 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2023-04-18 00:24:22.177 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 9998 (http)
+2023-04-18 00:24:22.180 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-9998"]
+2023-04-18 00:24:22.181 [restartedMain] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2023-04-18 00:24:22.181 [restartedMain] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.73]
+2023-04-18 00:24:22.207 [restartedMain] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2023-04-18 00:24:22.208 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 605 ms
+2023-04-18 00:24:22.560 [restartedMain] INFO  s.d.s.w.PropertySourcedRequestMappingHandlerMapping - Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2023-04-18 00:24:22.619 [restartedMain] INFO  o.s.b.d.autoconfigure.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2023-04-18 00:24:22.714 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-9998"]
+2023-04-18 00:24:22.723 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 9998 (http) with context path ''
+2023-04-18 00:24:22.724 [restartedMain] INFO  s.d.s.web.plugins.DocumentationPluginsBootstrapper - Context refreshed
+2023-04-18 00:24:22.731 [restartedMain] INFO  s.d.s.web.plugins.DocumentationPluginsBootstrapper - Found 1 custom documentation plugin(s)
+2023-04-18 00:24:22.744 [restartedMain] INFO  s.d.spring.web.scanners.ApiListingReferenceScanner - Scanning for api listing references
+2023-04-18 00:24:22.754 [restartedMain] INFO  com.atguigu.hospital.ManageApplication - Started ManageApplication in 1.458 seconds (JVM running for 2.022)
+2023-04-18 00:24:36.477 [http-nio-9998-exec-1] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-04-18 00:24:36.478 [http-nio-9998-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2023-04-18 00:24:36.479 [http-nio-9998-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2023-04-18 00:24:39.310 [http-nio-9998-exec-9] INFO  com.zaxxer.hikari.HikariDataSource - GuliHikariPool - Starting...
+2023-04-18 00:24:39.453 [http-nio-9998-exec-9] INFO  com.zaxxer.hikari.HikariDataSource - GuliHikariPool - Start completed.
+2023-04-18 00:26:20.958 [http-nio-9998-exec-2] INFO  com.atguigu.hospital.util.HttpRequestHelper - 加密前：0012|1681802780954|4121af7b70cc2aad52dfef5226859310
+2023-04-18 00:26:20.960 [http-nio-9998-exec-2] INFO  com.atguigu.hospital.util.HttpRequestHelper - 加密后：14e0ce82a0ad015fc7f1cfe481cc531f
+2023-04-18 00:26:20.964 [http-nio-9998-exec-2] INFO  com.atguigu.hospital.util.HttpRequestHelper - --> 发送请求：post data sign=14e0ce82a0ad015fc7f1cfe481cc531f&hoscode=0012&timestamp=1681802780954&
+2023-04-18 00:31:02.693 [http-nio-9998-exec-10] INFO  com.atguigu.hospital.util.HttpRequestHelper - 加密前：0012|1681803062689|4121af7b70cc2aad52dfef5226859310
+2023-04-18 00:31:02.701 [http-nio-9998-exec-10] INFO  com.atguigu.hospital.util.HttpRequestHelper - 加密后：1a72b5f38feced924485526fa98445ec
+2023-04-18 00:31:02.705 [http-nio-9998-exec-10] INFO  com.atguigu.hospital.util.HttpRequestHelper - --> 发送请求：post data sign=1a72b5f38feced924485526fa98445ec&hoscode=0012&timestamp=1681803062689&
+2023-04-18 00:32:17.629 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - GuliHikariPool - Shutdown initiated...
+2023-04-18 00:32:17.631 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - GuliHikariPool - Shutdown completed.
+2023-04-18 00:32:25.424 [restartedMain] INFO  com.atguigu.hospital.ManageApplication - Starting ManageApplication using Java 1.8.0_345 on mac300.charter.com with PID 6200 (/Users/yttao300/Documents/Career/HospitalSys/HospitalProject/reserve_parent/hospital-manage/target/classes started by yttao300 in /Users/yttao300/Documents/Career/HospitalSys/HospitalProject/reserve_parent)
+2023-04-18 00:32:25.425 [restartedMain] INFO  com.atguigu.hospital.ManageApplication - The following 1 profile is active: "dev"
+2023-04-18 00:32:25.445 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2023-04-18 00:32:25.465 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2023-04-18 00:32:25.970 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 9998 (http)
+2023-04-18 00:32:25.973 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-9998"]
+2023-04-18 00:32:25.973 [restartedMain] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2023-04-18 00:32:25.973 [restartedMain] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.73]
+2023-04-18 00:32:25.997 [restartedMain] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2023-04-18 00:32:25.997 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 531 ms
+2023-04-18 00:32:26.328 [restartedMain] INFO  s.d.s.w.PropertySourcedRequestMappingHandlerMapping - Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2023-04-18 00:32:26.398 [restartedMain] INFO  o.s.b.d.autoconfigure.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2023-04-18 00:32:26.487 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-9998"]
+2023-04-18 00:32:26.496 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 9998 (http) with context path ''
+2023-04-18 00:32:26.496 [restartedMain] INFO  s.d.s.web.plugins.DocumentationPluginsBootstrapper - Context refreshed
+2023-04-18 00:32:26.502 [restartedMain] INFO  s.d.s.web.plugins.DocumentationPluginsBootstrapper - Found 1 custom documentation plugin(s)
+2023-04-18 00:32:26.514 [restartedMain] INFO  s.d.spring.web.scanners.ApiListingReferenceScanner - Scanning for api listing references
+2023-04-18 00:32:26.524 [restartedMain] INFO  com.atguigu.hospital.ManageApplication - Started ManageApplication in 1.347 seconds (JVM running for 1.826)
+2023-04-18 00:32:32.578 [http-nio-9998-exec-1] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-04-18 00:32:32.579 [http-nio-9998-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2023-04-18 00:32:32.580 [http-nio-9998-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2023-04-18 00:32:53.081 [http-nio-9998-exec-2] INFO  com.zaxxer.hikari.HikariDataSource - GuliHikariPool - Starting...
+2023-04-18 00:32:53.190 [http-nio-9998-exec-2] INFO  com.zaxxer.hikari.HikariDataSource - GuliHikariPool - Start completed.
+2023-04-18 00:32:55.503 [http-nio-9998-exec-4] INFO  com.atguigu.hospital.util.HttpRequestHelper - 加密前：1000_0|1681803175498|4121af7b70cc2aad52dfef5226859310
+2023-04-18 00:32:55.505 [http-nio-9998-exec-4] INFO  com.atguigu.hospital.util.HttpRequestHelper - 加密后：1b1e36c82bcac1f98e35be1ca8ec4376
+2023-04-18 00:32:55.512 [http-nio-9998-exec-4] INFO  com.atguigu.hospital.util.HttpRequestHelper - --> 发送请求：post data sign=1b1e36c82bcac1f98e35be1ca8ec4376&hoscode=1000_0&timestamp=1681803175498&
+2023-04-18 00:38:48.451 [http-nio-9998-exec-7] INFO  com.atguigu.hospital.util.HttpRequestHelper - 加密前：1000_0|1681803528442|4121af7b70cc2aad52dfef5226859310
+2023-04-18 00:38:48.452 [http-nio-9998-exec-7] INFO  com.atguigu.hospital.util.HttpRequestHelper - 加密后：b6182766844c67ed426114d38e34bac7
+2023-04-18 00:38:48.455 [http-nio-9998-exec-7] INFO  com.atguigu.hospital.util.HttpRequestHelper - --> 发送请求：post data sign=b6182766844c67ed426114d38e34bac7&hoscode=1000_0&timestamp=1681803528442&
+2023-04-18 00:41:14.048 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - GuliHikariPool - Shutdown initiated...
+2023-04-18 00:41:14.050 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - GuliHikariPool - Shutdown completed.
