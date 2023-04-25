@@ -40,4 +40,20 @@ public class DictController {
         List<Dict> list = dictService.findChildData(id);
         return Result.ok(list);
     }
+
+    //search with dictcode and value
+    @GetMapping("getName/{dictCode}/{value}")
+    public String getName(@PathVariable String dictCode,
+                          @PathVariable String value){
+        String dictName = dictService.getDictName(dictCode, value);
+        return dictName;
+    }
+
+    //search with value;
+    @GetMapping("getName/{value}")
+    public String getName(@PathVariable String value){
+        String dictName = dictService.getDictName("", value);
+        return dictName;
+    }
+
 }

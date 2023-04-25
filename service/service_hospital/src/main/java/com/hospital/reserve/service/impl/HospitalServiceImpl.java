@@ -1,13 +1,19 @@
 package com.hospital.reserve.service.impl;
 
 import com.alibaba.fastjson.JSONObject;
+import com.hospital.cmn.client.DictFeignClient;
 import com.hospital.reserve.model.hosp.Hospital;
 import com.hospital.reserve.repository.HospitalRepository;
 import com.hospital.reserve.service.HospitalService;
+import com.hospital.reserve.vo.hosp.HospitalQueryVo;
+import com.hospital.reserve.vo.hosp.HospitalSetQueryVo;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.*;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
+import java.util.List;
 import java.util.Map;
 
 @Service
@@ -15,6 +21,9 @@ public class HospitalServiceImpl implements HospitalService {
 
     @Autowired
     private HospitalRepository hospitalRepository;
+
+    @Autowired
+    private DictFeignClient dictFeignClient;
 
     @Override
     public void save(Map<String, Object> paramMap) {
@@ -46,6 +55,44 @@ public class HospitalServiceImpl implements HospitalService {
     @Override
     public Hospital getByHoscode(String hoscode) {
         Hospital hospital = hospitalRepository.getHospitalByHoscode(hoscode);
+        return hospital;
+    }
+
+    @Override
+    public Page<Hospital> selectHospPage(Integer page, Integer limit, HospitalQueryVo hospitalQueryVo) {
+        Pageable pageable = PageRequest.of(page-1, limit);
+
+        //create example matcher
+        ExampleMatcher matcher = ExampleMatcher.matching()
+                .withStringMatcher(ExampleMatcher.StringMatcher.CONTAINING)
+                .withIgnoreCase(true);
+
+        //hospitalQueryVo to Hospital
+        Hospital hospital = new Hospital();
+        BeanUtils.copyProperties(hospitalQueryVo, hospital);
+
+        //create Example entity
+        Example<Hospital> example = Example.of(hospital, matcher);
+
+        Page<Hospital> pages = hospitalRepository.findAll(example, pageable);
+
+        //get list, loop hospital
+        pages.getContent().stream().forEach(item -> {
+            this.setHospitalHosType(item);
+        });
+
+        return pages;
+    }
+
+    private Hospital setHospitalHosType(Hospital hospital) {
+        //get hospital name by dictCode and value
+        String hostypeString = dictFeignClient.getName("Hostype", hospital.getHostype());
+        String provinceString = dictFeignClient.getName(hospital.getProvinceCode());
+        String cityString = dictFeignClient.getName(hospital.getCityCode());
+        String districtString = dictFeignClient.getName(hospital.getDistrictCode());
+
+        hospital.getParam().put("hostypeString", hostypeString);
+        hospital.getParam().put("fullAddress", provinceString+cityString+districtString);
         return hospital;
     }
 }

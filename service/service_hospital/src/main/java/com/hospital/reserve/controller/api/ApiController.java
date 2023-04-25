@@ -9,10 +9,14 @@ import com.hospital.reserve.common.result.ResultCodeEnum;
 import com.hospital.reserve.common.utils.MD5;
 import com.hospital.reserve.model.hosp.Department;
 import com.hospital.reserve.model.hosp.Hospital;
+import com.hospital.reserve.model.hosp.Schedule;
 import com.hospital.reserve.service.DepartmentService;
 import com.hospital.reserve.service.HospitalService;
 import com.hospital.reserve.service.HospitalSetService;
+import com.hospital.reserve.service.ScheduleService;
 import com.hospital.reserve.vo.hosp.DepartmentQueryVo;
+import com.hospital.reserve.vo.hosp.ScheduleOrderVo;
+import com.hospital.reserve.vo.hosp.ScheduleQueryVo;
 import lombok.val;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -38,6 +42,88 @@ public class ApiController {
 
     @Autowired
     private DepartmentService departmentService;
+
+    @Autowired
+    private ScheduleService scheduleService;
+
+    //upload schedule
+    @PostMapping("/saveSchedule")
+    public Result saveSchedule(HttpServletRequest request){
+        Map<String, String[]> requestMap = request.getParameterMap();
+        Map<String, Object> paramMap = HttpRequestHelper.switchMap(requestMap);
+
+        String hoscode = (String) paramMap.get("hoscode");
+        //sign check
+        String hospSign = (String) paramMap.get("sign");
+
+        String signKey = hospitalSetService.getSignKey(hoscode);
+
+        String signKeyMd5 = MD5.encrypt(signKey);
+
+        if(!hospSign.equals(signKeyMd5)){
+            throw new HospitalException(ResultCodeEnum.SIGN_ERROR);
+        }
+
+        scheduleService.save(paramMap);
+        return Result.ok();
+    }
+
+    //search Schedule
+    @PostMapping("schedule/list")
+    public Result findSchedule(HttpServletRequest request){
+        Map<String, String[]> requestMap = request.getParameterMap();
+        Map<String, Object> paramMap = HttpRequestHelper.switchMap(requestMap);
+
+
+        String hoscode = (String) paramMap.get("hoscode");
+        String depcode = (String) paramMap.get("depcode");
+
+        int page = StringUtils.isEmpty(paramMap.get("page")) ? 1 : Integer.parseInt((String)paramMap.get("page"));
+        int limit = StringUtils.isEmpty(paramMap.get("limit")) ? 1 : Integer.parseInt((String)paramMap.get("limit"));
+
+        //sign check
+        String hospSign = (String) paramMap.get("sign");
+
+        String signKey = hospitalSetService.getSignKey(hoscode);
+
+        String signKeyMd5 = MD5.encrypt(signKey);
+
+        if(!hospSign.equals(signKeyMd5)){
+            throw new HospitalException(ResultCodeEnum.SIGN_ERROR);
+        }
+
+        ScheduleQueryVo scheduleQueryVo = new ScheduleQueryVo();
+        scheduleQueryVo.setHoscode(hoscode);
+        scheduleQueryVo.setDepcode(depcode);
+
+        Page<Schedule> pageModel = scheduleService.findPageSchedule(page, limit, scheduleQueryVo);
+        return Result.ok(pageModel);
+    }
+
+    //Delete Schedule
+    @PostMapping("schedule/remove")
+    public Result removeSchedule(HttpServletRequest request){
+        Map<String, String[]> requestMap = request.getParameterMap();
+        Map<String, Object> paramMap = HttpRequestHelper.switchMap(requestMap);
+
+        //get hoscode and scheduleid
+        String hoscode = (String) paramMap.get("hoscode");
+        String hosScheduleId = (String) paramMap.get("hosScheduleId");
+
+        //sign check
+        String hospSign = (String) paramMap.get("sign");
+
+        String signKey = hospitalSetService.getSignKey(hoscode);
+
+        String signKeyMd5 = MD5.encrypt(signKey);
+
+        if(!hospSign.equals(signKeyMd5)){
+            throw new HospitalException(ResultCodeEnum.SIGN_ERROR);
+        }
+
+        scheduleService.remove(hoscode, hosScheduleId);
+        return Result.ok();
+    }
 
 
     //Delete Department
