@@ -99,6 +99,17 @@ public class DictServiceImpl extends ServiceImpl<DictMapper, Dict> implements Di
 
     }
 
+    @Override
+    public List<Dict> findByDictCode(String dictCode) {
+        //get id with dictCode
+        Dict dict = this.getDictByDictCode(dictCode);
+        List<Dict> list = this.findChildData(dict.getId());
+
+        //get child with id
+
+        return list;
+    }
+
     private Dict getDictByDictCode(String dictCode) {
         QueryWrapper<Dict> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq("dict_code", dictCode);

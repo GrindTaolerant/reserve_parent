@@ -1,0 +1,10 @@
+package com.hospital.reserve.user.config;
+
+
+import org.mybatis.spring.annotation.MapperScan;
+import org.springframework.context.annotation.Configuration;
+
+@Configuration
+@MapperScan("com.hospital.reserve.user.mapper")
+public class UserConfig {
+}

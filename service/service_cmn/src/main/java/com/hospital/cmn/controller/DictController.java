@@ -16,11 +16,18 @@ import java.util.List;
 @RestController
 @Api(value = "dict api")
 @RequestMapping("/admin/cmn/dict")
-@CrossOrigin
+//@CrossOrigin
 public class DictController {
 
     @Autowired
     private DictService dictService;
+
+    //get child with dictcode
+    @GetMapping("findByDictCode/{dictCode}")
+    public Result findByDictCode(@PathVariable String dictCode){
+        List<Dict> list = dictService.findByDictCode(dictCode);
+        return Result.ok(list);
+    }
 
     @GetMapping("exportData")
     public void exportDict(HttpServletResponse response){

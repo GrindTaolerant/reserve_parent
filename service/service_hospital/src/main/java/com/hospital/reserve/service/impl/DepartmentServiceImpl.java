@@ -6,13 +6,17 @@ import com.hospital.reserve.model.hosp.Department;
 import com.hospital.reserve.repository.DepartmentRepository;
 import com.hospital.reserve.service.DepartmentService;
 import com.hospital.reserve.vo.hosp.DepartmentQueryVo;
+import com.hospital.reserve.vo.hosp.DepartmentVo;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.*;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 @Service
 public class DepartmentServiceImpl implements DepartmentService {
@@ -68,5 +72,62 @@ public class DepartmentServiceImpl implements DepartmentService {
         if(department != null){
             departmentRepository.deleteById(department.getId());
         }
+    }
+
+    @Override
+    public List<DepartmentVo> findDeptTree(String hoscode) {
+
+        //create list
+        List<DepartmentVo> result = new ArrayList<>();
+
+        //check department info with hoscode
+        Department departmentQuery = new Department();
+        departmentQuery.setHoscode(hoscode);
+
+        Example example = Example.of(departmentQuery);
+
+
+        List<Department> departmentList = departmentRepository.findAll(example);
+
+        //get child with bigcode
+        Map<String, List<Department>> departmentMap =
+                departmentList.stream().collect(Collectors.groupingBy(Department::getBigcode));
+
+        //loop departmentMap
+        for(Map.Entry<String, List<Department>> entry : departmentMap.entrySet()){
+            //get bigcode
+            String bigcode = entry.getKey();
+            //get List with big code
+            List<Department> departmentListBig = entry.getValue();
+
+            //pack big dept
+            DepartmentVo departmentVoB = new DepartmentVo();
+            departmentVoB.setDepcode(bigcode);
+            departmentVoB.setDepname(departmentListBig.get(0).getBigname());
+
+            //pack child dept
+            List<DepartmentVo> children = new ArrayList<>();
+            for(Department department : departmentListBig){
+                DepartmentVo departmentVoC = new DepartmentVo();
+                departmentVoC.setDepcode(department.getDepcode());
+                departmentVoC.setDepname(department.getDepname());
+                children.add(departmentVoC);
+            }
+            //put children list under big
+            departmentVoB.setChildren(children);
+
+            result.add(departmentVoB);
+        }
+
+        return result;
+    }
+
+    @Override
+    public String getDepName(String hoscode, String depcode) {
+        Department department = departmentRepository.getDepartmentByHoscodeAndDepcode(hoscode, depcode);
+        if(department != null) {
+            return department.getDepname();
+        }
+        return null;
     }
 }
