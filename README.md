@@ -26,4 +26,16 @@ AWS S3: Store users authorization info on cloud
 Spring Mail: Send scheduling info emails to patients using SMTP  
 MongoDB: NoSQL database, for storing hospital and scheduling information    
 Docker: Deploy MongoDB, Redis, RabbitMQ  
-EasyExcel: Simplify the process of working with Excel files
+EasyExcel: Simplify the process of working with Excel files  
+
+**Front End**  
+
+Node: js runtime environment   
+Vue: Build user interfaces    
+Element-ui: Provide ui elements  
+Nuxt: Server-side Render  
+NPM: Package manager based on node.js  
+Echarts: For scheduling data visualization  
+
+
+
