@@ -14,10 +14,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 public interface HospitalFeignClient {
 
     @GetMapping("/api/hosp/hospital/inner/getScheduleOrderVo/{scheduleId}")
-    ScheduleOrderVo getScheduleOrderVo(@PathVariable("scheduleId") String scheduleId);
+    public ScheduleOrderVo getScheduleOrderVo(@PathVariable("scheduleId") String scheduleId);
+
 
     @GetMapping("/api/hosp/hospital/inner/getSignInfoVo/{hoscode}")
-    SignInfoVo getSignInfoVo(@PathVariable("hoscode") String hoscode);
+    public SignInfoVo getSignInfoVo(@PathVariable("hoscode") String hoscode);
 
 
 }

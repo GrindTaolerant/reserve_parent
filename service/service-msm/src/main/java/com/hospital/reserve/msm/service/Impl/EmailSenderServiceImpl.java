@@ -34,19 +34,44 @@ public class EmailSenderServiceImpl implements EmailSenderService {
 
         this.mailSender.send(simpleMailMessage);
 
-
     }
 
     //might be problem
     @Override
     public boolean send(MsmVo msmVo) {
         if(!StringUtils.isEmpty(msmVo.getPhone())){
-            String code = (String)msmVo.getParam().get("code");
+            Map<String, Object> param = msmVo.getParam();
             String toMail = msmVo.getPhone();
-            String subject = "Order Confirmation";
-            this.send(toMail, subject, code);
-            return true;
+
+            return this.send(toMail, param);
         }
         return false;
     }
+
+
+    //mq send
+    private boolean send(String toEmail, Map<String, Object> param){
+        if(StringUtils.isEmpty(toEmail)){
+            return false;
+        }
+
+        String subject = (String) param.get("title");
+        Integer amount = (Integer) param.get("amount");
+        String reserveDate = (String) param.get("reserveDate");
+        String name = (String) param.get("name");
+
+
+        SimpleMailMessage simpleMailMessage = new SimpleMailMessage();
+        simpleMailMessage.setFrom("hospitalreservemailsender@gmail.com");
+        simpleMailMessage.setTo(toEmail);
+        simpleMailMessage.setSubject(subject);
+
+
+        simpleMailMessage.setText(subject + ", " + amount + ", " + reserveDate + ", " + name);
+
+
+        this.mailSender.send(simpleMailMessage);
+        return true;
+    }
+
 }

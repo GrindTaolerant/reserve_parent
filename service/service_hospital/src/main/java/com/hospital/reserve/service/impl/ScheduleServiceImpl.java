@@ -287,7 +287,7 @@ public class ScheduleServiceImpl extends ServiceImpl<ScheduleMapper, Schedule> i
         ScheduleOrderVo scheduleOrderVo = new ScheduleOrderVo();
 
         //排班信息
-        Schedule schedule = baseMapper.selectById(scheduleId);
+        Schedule schedule = this.getById(scheduleId);
         if(null == schedule) {
             throw new YyghException(ResultCodeEnum.PARAM_ERROR);
         }
@@ -331,6 +331,14 @@ public class ScheduleServiceImpl extends ServiceImpl<ScheduleMapper, Schedule> i
         scheduleOrderVo.setStartTime(startTime.toDate());
         return scheduleOrderVo;
 
+
+    }
+
+    @Override
+    public void update(Schedule schedule) {
+        schedule.setUpdateTime(new Date());
+        //主键一致就是更新
+        scheduleRepository.save(schedule);
 
     }
 

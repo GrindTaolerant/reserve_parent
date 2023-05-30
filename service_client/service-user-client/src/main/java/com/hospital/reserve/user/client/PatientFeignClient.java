@@ -12,6 +12,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 public interface PatientFeignClient {
 
     @GetMapping("/api/user/patient/inner/get/{id}")
-    Patient getPatientOrder(@PathVariable("id") Long id);
+    public Patient getPatient(@PathVariable("id") Long id);
 
 }
