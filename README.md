@@ -39,3 +39,34 @@ Echarts: For scheduling data visualization
 
 
 
+
+## Hospital Management Service
+
+![Screen Shot 2023-05-30 at 3 25 14 PM](https://github.com/GrindTaolerant/reserve_parent/assets/66355314/10553ede-13b7-41e1-8ee3-5131b74ec64b). 
+
+
+Hospital Management:  
+- Hospital Setting List
+- Hospital Setting Add
+- Hospital List  
+
+Data Management:
+- Data dictionary - State-City-Zip
+
+User Management:
+- User Info List
+- User Authorization List
+
+Statistics Management:
+- Scheduling Data Charts
+
+
+
+
+## User Scheduling Service
+
+![Frontend](https://github.com/GrindTaolerant/reserve_parent/assets/66355314/2428997a-ee1c-49c3-b741-c3a88512b104)
+
+
+
+
